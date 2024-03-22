@@ -2,7 +2,7 @@
 ------
 Usage:
 - import the repo to your project
-- run `bash npm install`
+- run `npm install`
 - you are ready to go
 
 Features:
