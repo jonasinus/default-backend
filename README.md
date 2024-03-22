@@ -3,6 +3,7 @@
 Usage:
 - import the repo to your project
 - run `npm install`
+- use the `database.setupDB()` function to create the database and tables needed for this project
 - you are ready to go
 
 Features:
