@@ -13,4 +13,4 @@ Features:
 - modular design
   - code split into reuseable modules
   - clean folder structure
-  - all settings in .env file
+  - all configurations in `./src/config/[configType].config.ts`
