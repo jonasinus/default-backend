@@ -8,6 +8,7 @@ Usage:
 
 Features:
 - Database connection (uses mysql databases)
+- Models for all Database-Tables in ´@models/[modelType].model.ts´
 - Auth-Router provided by default
 - User-Router as well
 - modular design
