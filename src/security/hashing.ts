@@ -1,8 +1,8 @@
+import SECRET_CONFIG from '@config/secret.config'
 import { genSaltSync, hashSync } from 'bcrypt'
 
 export function securePassword(password: string): { hash: string; salt: string } {
-    const saltRounds = 16
-    const salt = genSaltSync(saltRounds)
+    const salt = genSaltSync(SECRET_CONFIG.saltRounds)
     const hash = hashSync(password, salt)
     return { hash, salt }
 }

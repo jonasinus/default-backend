@@ -1,6 +1,8 @@
+import SECRET_CONFIG from '@config/secret.config'
+
 export function generateID(takenIds: string[] = []): string {
     const base64Chars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-    const idLength: number = 32
+    const idLength: number = SECRET_CONFIG.idLength
     let newId: string = ''
 
     do {

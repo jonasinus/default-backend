@@ -1,6 +1,7 @@
+import SECRET_CONFIG from '@config/secret.config'
 import { token } from '@controller/jsonwebtoken.controller'
 import { findUser } from '@controller/user.controller'
-import protect, { authCookieKey, AuthenticatedRequest } from '@middleware/protect.middleware'
+import protect, { AuthenticatedRequest } from '@middleware/protect.middleware'
 import { comparePassword } from '@security/hashing'
 import { Router } from 'express'
 
@@ -19,7 +20,7 @@ authRouter.post('/login', async (req, res) => {
             const jwt = token({ id: user.id, username: user.username, iat: Date.now() })
             return res
                 .status(200)
-                .cookie(authCookieKey, jwt, { expires: new Date(new Date().setMonth(new Date().getMonth() + 1)) })
+                .cookie(SECRET_CONFIG.authTokenName, jwt, { expires: new Date(new Date().setMonth(new Date().getMonth() + 1)) })
                 .json({ msg: 'logged in!' })
         }
         return res.status(403).json({ error: 'invalid credentials!' })
@@ -29,7 +30,7 @@ authRouter.post('/login', async (req, res) => {
 })
 
 authRouter.all('/logout', protect, (req: AuthenticatedRequest, res) => {
-    res.clearCookie(authCookieKey).status(200).json({ msg: 'logged out!' })
+    res.clearCookie(SECRET_CONFIG.authTokenName).status(200).json({ msg: 'logged out!' })
 })
 
 export default authRouter
